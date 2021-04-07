@@ -21,7 +21,7 @@ int main(void) {
 	unsigned char tmpC = 0x00;
 	unsigned char lowFuel = 0x00;
 	while (1) {
-		tmpA = PINA & 0x0F;
+		tmpA = PINA & 0x7F;
 		tmpC = 0x00;
 		if(tmpA > 12){
 			tmpC = tmpC | 0x01;
@@ -49,9 +49,7 @@ int main(void) {
 		}
 		// if a person is in the seat (PA5), and not fastened (!PA6)
 		// 	and key is in ignition (PA4), PC7 is 1
-		if(((tmpA & 0x70) >> 4) == 0x03){
-			tmpC = tmpC | 0x80;
-		}
+		tmpC = (((tmpA >> 4) & 0x07) == 0x03)? tmpC | 0x80 : tmpC;
 		PORTC = tmpC | lowFuel;
 	}
 	return 0;
