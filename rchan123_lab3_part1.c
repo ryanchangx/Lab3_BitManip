@@ -23,11 +23,12 @@ int main(void) {
 	unsigned char sum = 0x00;
 	unsigned char bitA = 0;
 	unsigned char bitB = 0;
+	int i;
 	while (1) {
 		sum = 0x00;
 		tmpA = PORTA;
 		tmpB = PORTB;
-		for(int i = 0 i < 8; ++i){	
+		for(i = 0; i < 8; ++i){	
 			bitA = (tmpA >> i) & 0x01;
 			bitB = (tmpB >> i) & 0x01;
 			sum += bitA + bitB;
