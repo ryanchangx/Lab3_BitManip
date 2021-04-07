@@ -26,8 +26,8 @@ int main(void) {
 	int i;
 	while (1) {
 		sum = 0x00;
-		tmpA = PORTA;
-		tmpB = PORTB;
+		tmpA = PINA;
+		tmpB = PINB;
 		for(i = 0; i < 8; ++i){	
 			bitA = (tmpA >> i) & 0x01;
 			bitB = (tmpB >> i) & 0x01;
