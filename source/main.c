@@ -26,6 +26,7 @@ int main(void) {
 		// 	then airbag disabled: (PB1 = 1)
 		// 	AND disabled icon: (PB2 = 1);
 		// else then nothing is set
+		PORTB = 0x00;
 		tmpB = 0x00;
 		weight = (PIND << 1) | (PINB & 0x01);
 		if(weight >= 70){
