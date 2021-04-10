@@ -21,17 +21,11 @@ int main(void) {
 	unsigned char tmpA = 0x00;
 	unsigned char tmpB = 0x00;
 	unsigned char sum = 0x00;
-	unsigned char bitA = 0;
-	unsigned char bitB = 0;
 	int i;
 	while (1) {
-		sum = 0x00;
-		tmpA = PINA;
-		tmpB = PINB;
+		sum = 0x00; tmpA = PINA; tmpB = PINB;
 		for(i = 0; i < 8; ++i){	
-			bitA = (tmpA >> i) & 0x01;
-			bitB = (tmpB >> i) & 0x01;
-			sum += bitA + bitB;
+			sum += ((tmpA >> i) & 0x01) + ((tmpB >> i) & 0x01);
 		}
 		PORTC = sum;	
 	}
